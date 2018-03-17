@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 /*
  * 插入排序
  * 时间复杂度O(n^2),空间复杂度O(1)
@@ -31,12 +29,7 @@ public class InsertSort {
 	}
 
 	public static void main(String[] args) {
-		int[] unsorted = new int[5];
-		Scanner scan = new Scanner(System.in);
-		System.out.println("请输入五个数： ");
-		for (int i = 0; i < 5; i++) {
-			unsorted[i] = scan.nextInt();
-		}
+		int[] unsorted = { 14, 13, 11, 15, 12, 1, 5, 2, 3, 9 };;
 		insertSort(unsorted);
 	}
 }

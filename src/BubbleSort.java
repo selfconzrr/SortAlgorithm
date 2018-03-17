@@ -31,7 +31,7 @@ public class BubbleSort {
 		boolean notFinished = true;
 		for (int i = 0; i < unsorted.length && notFinished; i++)
 			for (int j = 0; j < unsorted.length - i - 1; j++) {
-				notFinished = false;
+				notFinished = false;// 若没有进行交换，则内层循环结束后依然是false，说明已经有序了，结束外层循环
 				if (unsorted[j] > unsorted[j + 1]) {
 					int temp = unsorted[j];
 					unsorted[j] = unsorted[j + 1];
@@ -45,12 +45,7 @@ public class BubbleSort {
 
 	public static void main(String[] args) {
 
-		int[] unsorted = new int[5];
-		Scanner scan = new Scanner(System.in);
-		System.out.println("请输入五个数：");
-		for (int i = 0; i < 5; i++) {
-			unsorted[i] = scan.nextInt();
-		}
+		int[] unsorted = { 14, 13, 11, 15, 12, 1, 5, 2, 3, 9 };
 		bubbleSort(unsorted);
 		System.out.println();
 		modifiedBubbleSort(unsorted);
