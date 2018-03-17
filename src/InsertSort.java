@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
 /*
- * ²åÈëÅÅĞò
- * Ê±¼ä¸´ÔÓ¶ÈO(n^2),¿Õ¼ä¸´ÔÓ¶ÈO(1)
- * in-place²Ù×÷
- * ÎÈ¶¨ÅÅĞò£¬²»¸Ä±äÏàÍ¬ÔªËØÔ­À´µÄË³Ğò
- * ÅÅĞòË¼Â·£ºÃ¿´Î½«Ò»¸ö´ıÅÅĞòµÄÔªËØÓëÒÑÅÅĞòµÄÔªËØ½øĞĞÖğÒ»±È½Ï£¬Ö±µ½ÕÒµ½ºÏÊÊµÄÎ»ÖÃ°´´óĞ¡²åÈë¡£
+ * æ’å…¥æ’åº
+ * æ—¶é—´å¤æ‚åº¦O(n^2),ç©ºé—´å¤æ‚åº¦O(1)
+ * in-placeæ“ä½œ
+ * ç¨³å®šæ’åºï¼Œä¸æ”¹å˜ç›¸åŒå…ƒç´ åŸæ¥çš„é¡ºåº
+ * æ’åºæ€è·¯ï¼šæ¯æ¬¡å°†ä¸€ä¸ªå¾…æ’åºçš„å…ƒç´ ä¸å·²æ’åºçš„å…ƒç´ è¿›è¡Œé€ä¸€æ¯”è¾ƒï¼Œç›´åˆ°æ‰¾åˆ°åˆé€‚çš„ä½ç½®æŒ‰å¤§å°æ’å…¥ã€‚
  * eg:2 5 1 3 6
  */
 public class InsertSort {
@@ -13,8 +13,8 @@ public class InsertSort {
 	private static void insertSort(int[] sorted) {
 		for (int i = 1; i < sorted.length; i++) {
 			// i=1:2<5
-			// i=2:5>1,temp=1,j=2,5>1,5ºóÒÆÌÚ³öÎ»ÖÃ½o1,2>1,2ºóÒÆÌÚ³öÎ»ÖÃ½o1
-			// i=3:5>3,temp=3,j=3,5>3,5ºóÒÆÌÚ³öÎ»ÖÃ½o3,2<3
+			// i=2:5>1,temp=1,j=2,5>1,5åç§»è…¾å‡ºä½ç½®çµ¦1,2>1,2åç§»è…¾å‡ºä½ç½®çµ¦1
+			// i=3:5>3,temp=3,j=3,5>3,5åç§»è…¾å‡ºä½ç½®çµ¦3,2<3
 			// i=4:5<6
 			if (sorted[i - 1] > sorted[i]) {
 				int temp = sorted[i];
@@ -33,7 +33,7 @@ public class InsertSort {
 	public static void main(String[] args) {
 		int[] unsorted = new int[5];
 		Scanner scan = new Scanner(System.in);
-		System.out.println("ÇëÊäÈëÎå¸öÊı£º ");
+		System.out.println("è¯·è¾“å…¥äº”ä¸ªæ•°ï¼š ");
 		for (int i = 0; i < 5; i++) {
 			unsorted[i] = scan.nextInt();
 		}

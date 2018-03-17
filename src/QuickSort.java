@@ -27,7 +27,7 @@ public class QuickSort {
 	public static void main(String[] args) {
 		int[] unsorted = new int[5];
 		Scanner scan = new Scanner(System.in);
-		System.out.println("ÇëÊäÈëÎå¸öÊı£º ");
+		System.out.println("è¯·è¾“å…¥äº”ä¸ªæ•°ï¼š ");
 		for (int i = 0; i < 5; i++) {
 			unsorted[i] = scan.nextInt();
 		}
@@ -36,4 +36,5 @@ public class QuickSort {
 			System.out.print(" " + x);
 		System.out.println();
 	}
+	
 }
