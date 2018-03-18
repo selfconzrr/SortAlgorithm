@@ -35,30 +35,37 @@ public class SelectionSort {
 	 */
 	public static void adjustHeap(int[] a, int i, int size) { // 原数组，要调整的元素的下标，数组长度
 		int tmp = a[i]; // 用变量存储当前要调整的元素，这样调整时避免了交换，直接赋值就行。可以省一些赋值次数
-		while (2 * i + 1 < size) { // 如果有左孩子
-			int maxchild = 2 * i + 1;
-			if (2 * i + 1 < size - 1) // 如果有右孩子
-				if (a[2 * i + 1] < a[2 * i + 2])
-					maxchild++; // 确定较大的那个子节点的下标
-			if (tmp < a[maxchild]) {
-				a[i] = a[maxchild];
-				i = maxchild; // 下移一层。这一步不能忘
+		int leftChild = 2 * i + 1;// 左孩子结点的位置。(i+1 为当前调整结点的右孩子结点的位置)
+		while (leftChild < size) { // 如果有左孩子
+			if (leftChild + 1 < size && a[leftChild] < a[leftChild + 1]) // 如果右孩子大于左孩子(找到比当前待调整结点大的孩子结点)
+				leftChild++; // 确定较大的那个子节点的下标
+			if (a[i] < a[leftChild]) {// 如果较大的子结点大于父结点
+				a[i] = a[leftChild];// 那么把较大的子结点往上移动，替换它的父结点
+				i = leftChild;// 重新设置i ,即待调整的下一个结点的位置
+				leftChild = 2 * i + 1;// 如果当前待调整结点大于它的左右孩子，则不需要调整，直接退出
 			} else
 				break;
+			a[i] = tmp; // 当前待调整的结点放到比其大的孩子结点位置上
 		}
-		a[i] = tmp; // 现在这个i就是最终位置
 	}
 
 	public static void heapSort() {
 		int[] a = { 14, 13, 11, 15, 12, 1, 5, 2, 3, 9 };
-		for (int i = a.length / 2; i >= 0; i--) // 把原数组变成堆。调整一半元素即可
-			adjustHeap(a, i, a.length);
+		/*
+		 * 初始堆进行调整 将H[0..length-1]建成堆，最后一个有孩子的节点的位置 i=
+		 * (length -1) / 2
+		 */
+		for (int i = (a.length - 1) / 2; i >= 0; i--)
+			adjustHeap(a, i, a.length);// 调整成最大堆
+
+		// 从最后一个元素开始对序列进行调整
 		for (int i = a.length - 1; i > 0; i--) { // 进行流程2
 			int tmp = a[0];
 			a[0] = a[i];
 			a[i] = tmp; // 交换根节点和最后的节点
-			adjustHeap(a, 0, i); // 把剩余的i个元素调整成堆，要调整的元素是根节点
+			adjustHeap(a, 0, i); // 每次交换堆顶元素和堆中最后一个元素之后，都要对堆进行调整
 		}
+
 		System.out.println("堆排序结果：");
 		for (int x : a)
 			System.out.print(x + " ");

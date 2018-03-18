@@ -28,8 +28,69 @@ public class InsertSort {
 			System.out.print(" " + x);
 	}
 
+	private static void binarySort(int[] data) {
+		int length = data.length;
+		for (int i = 1; i < length; i++) {
+			int temp = data[i];
+			int low = 0;
+			int height = i - 1;
+			while (low <= height) {
+				// 找到中间值
+				int mid = (low + height) / 2;
+				if (temp > data[mid]) {
+					// 限制在大于中点搜索
+					low = mid + 1;
+				} else {
+					// 限制在小于中点搜索
+					height = mid - 1;
+				}
+			}
+			// 将low到i处的所有元素向后整体移一位
+			for (int j = i; j > low; j--) {
+				data[j] = data[j - 1];
+			}
+			// 最后将tmp的值插入合适位置
+			data[low] = temp;
+		}
+		for (int x : data)
+			System.out.print(" " + x);
+	}
+
+	public static void shellSort(int[] data) {
+		// 开始排序
+		int len = data.length;
+		// h保存增量
+		int h = 1;
+		// 按h*3+1得到具体的增量
+		while (h <= len / 3) {
+			h = h * 3 + 1;
+		}
+		while (h > 0) {
+			for (int i = h; i < len; i++) {
+				// 当整体移动时，保证data[i]的值不变
+				int temp = data[i];
+				// 当i索引的值大于前面的值表示无需插入，而此时i-1之前的数据都是有序的，i-1索引元素的值就是最大值
+				if (data[i] < data[i - h]) {
+					int j = i - h;
+					// 整体后移h格
+					for (; j >= 0 && data[j] > temp; j -= h) {
+						data[j + h] = data[j];
+					}
+					// 最后把tmp的值插入合适位置
+					data[j + h] = temp;
+				}
+			}
+			h = (h - 1) / 3;
+		}
+		// 输出验证
+		for (int i = 0; i < len; i++)
+			System.out.println(data[i]);
+	}
+
 	public static void main(String[] args) {
-		int[] unsorted = { 14, 13, 11, 15, 12, 1, 5, 2, 3, 9 };;
-		insertSort(unsorted);
+		int[] unsorted = { 14, 13, 11, 15, 12, 1, 5, 2, 3, 9 };
+		// insertSort(unsorted);
+//		binarySort(unsorted);
+		shellSort(unsorted);
 	}
 }
