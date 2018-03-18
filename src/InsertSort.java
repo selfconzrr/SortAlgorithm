@@ -9,6 +9,7 @@
 public class InsertSort {
 
 	private static void insertSort(int[] sorted) {
+		
 		for (int i = 1; i < sorted.length; i++) {
 			// i=1:2<5
 			// i=2:5>1,temp=1,j=2,5>1,5后移腾出位置給1,2>1,2后移腾出位置給1
